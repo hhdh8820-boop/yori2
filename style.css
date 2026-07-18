@@ -11,137 +11,113 @@ html,body{
 }
 
 body{
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:
-    linear-gradient(180deg,#05050a 0%,#100826 45%,#29145d 100%);
-
+    background:linear-gradient(180deg,#05050a 0%,#120b2d 45%,#2d1963 100%);
     color:white;
-
     font-family:"Inter",sans-serif;
-
     position:relative;
-
 }
 
-/* ESTRELLAS */
+/* ---------- ESTRELLAS ---------- */
 
 body::before{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-background-image:
-
-radial-gradient(circle,#fff 1px,transparent 2px);
-
-background-size:160px 160px;
-
-opacity:.55;
-
-animation:stars 25s linear infinite;
-
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+        radial-gradient(circle,#ffffff 1px,transparent 2px);
+    background-size:120px 120px;
+    opacity:.35;
+    animation:starsMove 40s linear infinite;
 }
 
-@keyframes stars{
+@keyframes starsMove{
 
 from{
-
 transform:translateY(0);
-
 }
 
 to{
-
-transform:translateY(150px);
-
+transform:translateY(120px);
 }
 
 }
 
-/* TARJETA */
+/* ---------- INTRO ---------- */
 
 #intro{
 
-position:relative;
+position:absolute;
+inset:0;
 
-z-index:10;
+display:flex;
+justify-content:center;
+align-items:center;
 
-width:min(90%,700px);
-
-padding:60px;
-
-border-radius:28px;
-
-background:rgba(255,255,255,.05);
-
-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,.08);
-
-text-align:center;
-
-transition:1s;
+transition:1.2s;
 
 }
-
-/* CUANDO DESAPAREZCA */
 
 #intro.hide{
 
-background:transparent;
-
-border:none;
-
-box-shadow:none;
-
-backdrop-filter:none;
+opacity:0;
+transform:scale(1.05);
+pointer-events:none;
 
 }
 
-/* TITULO */
+.card{
 
-h1{
+width:min(90%,650px);
+
+padding:55px;
+
+border-radius:28px;
+
+background:rgba(255,255,255,.06);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.10);
+
+text-align:center;
+
+box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+}
+
+.card h1{
 
 font-family:"Cormorant Garamond",serif;
 
-font-size:68px;
+font-size:64px;
 
 font-weight:500;
 
-margin-bottom:20px;
+margin-bottom:18px;
 
 }
 
-p{
+.card p{
 
-font-size:21px;
+font-size:20px;
 
 line-height:1.8;
 
-color:#ddd;
+color:#d8d8d8;
+
+margin-bottom:40px;
 
 }
 
-/* BOTON */
-
 button{
 
-margin-top:40px;
-
-padding:16px 45px;
+padding:16px 46px;
 
 border:none;
 
 border-radius:999px;
 
-background:#7b5bff;
+background:#7d5cff;
 
 color:white;
 
@@ -157,35 +133,19 @@ button:hover{
 
 transform:scale(1.05);
 
-background:#957aff;
+background:#9276ff;
+
+box-shadow:0 0 25px rgba(146,118,255,.45);
 
 }
 
-/* HISTORIA */
+/* ---------- HISTORIA ---------- */
 
-.hidden{
+#storyScreen{
 
-display:none;
+position:absolute;
 
-}
-
-#story{
-
-margin-top:60px;
-
-}
-
-#storyText{
-
-font-family:"Cormorant Garamond",serif;
-
-font-size:42px;
-
-line-height:1.7;
-
-text-align:center;
-
-min-height:180px;
+inset:0;
 
 display:flex;
 
@@ -193,30 +153,32 @@ justify-content:center;
 
 align-items:center;
 
-opacity:0;
-
-transition:opacity 1s;
-
-}
-
-/* FADE */
-
-@keyframes fade{
-
-from{
+padding:50px;
 
 opacity:0;
 
-transform:translateY(25px);
+pointer-events:none;
+
+transition:1s;
 
 }
 
-to{
+#storyScreen.show{
 
 opacity:1;
 
-transform:translateY(0);
-
 }
+
+#storyText{
+
+max-width:900px;
+
+text-align:center;
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:52px;
+
+line-height:1.6;
 
 }
