@@ -165,3 +165,167 @@ text.innerHTML=`
 iniciarBotonNo();
 
 }
+
+const mensajesNo = [
+
+"¿Segura? 🥺",
+
+"Buen intento. 😼",
+
+"Las olas votaron por el 'Sí'. 🌊",
+
+"Michael estaría decepcionado de ese clic. 😔",
+
+"Abel escribiría otro álbum si pulsas ese botón. 🎤",
+
+"Ni MJ pudo enseñarme a rendirme. 🕺",
+
+"The Weeknd diría: Don't break my heart. 💔",
+
+"El botón tiene ansiedad... por eso huye.",
+
+"Creo que una estrella acaba de apagarse. ✨",
+
+"¿Y si pruebas el otro botón? 💜"
+
+];
+
+let intentos = 0;
+
+function iniciarBotonNo(){
+
+const no = document.getElementById("no");
+
+const si = document.getElementById("si");
+
+no.addEventListener("mouseenter", mover);
+
+no.addEventListener("click", mover);
+
+si.addEventListener("click", finalFeliz);
+
+}
+
+function mover(e){
+
+const no = e.target;
+
+intentos++;
+
+if(intentos>=8){
+
+no.innerText="Bueno... respeto tu decisión 💜";
+
+no.style.position="static";
+
+no.removeEventListener("mouseenter", mover);
+
+return;
+
+}
+
+const x=Math.random()*(window.innerWidth-170);
+
+const y=Math.random()*(window.innerHeight-80);
+
+no.style.position="fixed";
+
+no.style.left=x+"px";
+
+no.style.top=y+"px";
+
+mostrarMensaje();
+
+}
+
+function mostrarMensaje(){
+
+const viejo=document.getElementById("popup");
+
+if(viejo) viejo.remove();
+
+const div=document.createElement("div");
+
+div.id="popup";
+
+div.innerText=mensajesNo[
+Math.floor(Math.random()*mensajesNo.length)
+];
+
+div.style.position="fixed";
+
+div.style.top="70px";
+
+div.style.left="50%";
+
+div.style.transform="translateX(-50%)";
+
+div.style.background="rgba(0,0,0,.35)";
+
+div.style.padding="14px 24px";
+
+div.style.borderRadius="18px";
+
+div.style.backdropFilter="blur(10px)";
+
+div.style.fontSize="18px";
+
+div.style.opacity="0";
+
+div.style.transition=".4s";
+
+document.body.appendChild(div);
+
+setTimeout(()=>{
+
+div.style.opacity="1";
+
+},20);
+
+setTimeout(()=>{
+
+div.remove();
+
+},2200);
+
+}
+
+function finalFeliz(){
+
+document.body.animate([
+
+{filter:"brightness(1)"},
+
+{filter:"brightness(1.4)"},
+
+{filter:"brightness(1)"}
+
+],{
+
+duration:1800
+
+});
+
+story.innerHTML=`
+
+<h1 style="font-family:'Cormorant Garamond',serif;font-size:68px;">
+
+Gracias...
+
+</h1>
+
+<p style="font-size:30px;margin-top:25px;">
+
+Prometo que esta vez no solo te lo diré.
+
+<br><br>
+
+Voy a demostrártelo.
+
+💜
+
+</p>
+
+`;
+
+}
