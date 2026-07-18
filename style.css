@@ -356,3 +356,31 @@ transform:translateX(0%) rotate(360deg);
 }
 
 }
+
+/* ===== EFECTO MAQUINA ===== */
+
+.cursor{
+
+display:inline-block;
+
+width:2px;
+
+height:1em;
+
+background:white;
+
+margin-left:4px;
+
+animation:blink .8s infinite;
+
+}
+
+@keyframes blink{
+
+50%{
+
+opacity:0;
+
+}
+
+}
