@@ -13,7 +13,7 @@
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -21,17 +21,19 @@
 
 <body>
 
+<!-- SONIDO -->
+
 <audio id="waves" loop>
     <source src="assets/audio/waves.mp3" type="audio/mpeg">
 </audio>
 
-<!-- INTRO -->
-    
+<!-- FONDO -->
+
 <div id="sky">
 
-    <div class="moon"></div>
-
     <div class="stars"></div>
+
+    <div class="moon"></div>
 
     <div class="ocean">
 
@@ -44,7 +46,9 @@
     </div>
 
 </div>
-    
+
+<!-- INTRO -->
+
 <section id="intro">
 
     <div class="card">
@@ -53,13 +57,13 @@
 
         <p>
 
-        Hay algo que llevo muchísimo tiempo queriéndote decir.
+            Hay algo que llevo muchísimo tiempo queriéndote decir.
 
         </p>
 
         <button id="start">
 
-        Comenzar
+            Comenzar
 
         </button>
 
@@ -71,7 +75,13 @@
 
 <section id="storyScreen">
 
-    <p id="storyText"></p>
+    <div id="storyContainer">
+
+        <h2 id="chapter"></h2>
+
+        <p id="storyText"></p>
+
+    </div>
 
 </section>
 
