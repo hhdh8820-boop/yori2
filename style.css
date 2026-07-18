@@ -11,63 +11,272 @@ html,body{
 }
 
 body{
-    background:linear-gradient(180deg,#05050a 0%,#120b2d 45%,#2d1963 100%);
-    color:white;
+    background:linear-gradient(
+        to bottom,
+        #04050d 0%,
+        #120b2e 45%,
+        #22145a 75%,
+        #120b2e 100%
+    );
+
     font-family:"Inter",sans-serif;
+    color:white;
     position:relative;
 }
 
-/* ---------- ESTRELLAS ---------- */
+/* ===========================
+        CIELO
+=========================== */
 
-body::before{
-    content:"";
+#sky{
     position:fixed;
     inset:0;
-    background-image:
-        radial-gradient(circle,#ffffff 1px,transparent 2px);
-    background-size:120px 120px;
-    opacity:.35;
-    animation:starsMove 40s linear infinite;
+    overflow:hidden;
+    z-index:-2;
 }
 
-@keyframes starsMove{
+/* Luna */
+
+.moon{
+
+    position:absolute;
+
+    top:70px;
+
+    right:90px;
+
+    width:110px;
+
+    height:110px;
+
+    border-radius:50%;
+
+    background:#f5f3ff;
+
+    box-shadow:
+    0 0 35px rgba(255,255,255,.35),
+    0 0 70px rgba(171,145,255,.35),
+    0 0 130px rgba(111,74,255,.18);
+
+    animation:moon 7s ease-in-out infinite;
+
+}
+
+@keyframes moon{
+
+0%,100%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+}
+
+/* ===========================
+        ESTRELLAS
+=========================== */
+
+.stars{
+
+position:absolute;
+
+inset:0;
+
+background-image:
+
+radial-gradient(circle,#ffffff 1px,transparent 2px),
+radial-gradient(circle,#ffffff 1px,transparent 2px),
+radial-gradient(circle,#ffffff 1px,transparent 2px),
+radial-gradient(circle,#ffffff 1px,transparent 2px);
+
+background-size:
+
+170px 170px,
+250px 250px,
+320px 320px,
+400px 400px;
+
+opacity:.55;
+
+animation:twinkle 5s ease-in-out infinite alternate;
+
+}
+
+@keyframes twinkle{
 
 from{
-transform:translateY(0);
+
+opacity:.25;
+
 }
 
 to{
-transform:translateY(120px);
-}
+
+opacity:.55;
 
 }
 
-/* ---------- INTRO ---------- */
+}
+
+/* ===========================
+        OCEANO
+=========================== */
+
+.ocean{
+
+position:absolute;
+
+bottom:0;
+
+left:0;
+
+width:100%;
+
+height:220px;
+
+overflow:hidden;
+
+}
+
+/* Reflejo de la luna */
+
+.ocean::before{
+
+content:"";
+
+position:absolute;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:140px;
+
+height:220px;
+
+background:linear-gradient(
+
+to bottom,
+
+rgba(255,255,255,.20),
+
+rgba(255,255,255,0)
+
+);
+
+filter:blur(18px);
+
+opacity:.55;
+
+animation:reflection 7s ease-in-out infinite;
+
+}
+
+@keyframes reflection{
+
+0%,100%{
+
+transform:translateX(-50%) scaleY(1);
+
+}
+
+50%{
+
+transform:translateX(-50%) scaleY(.94);
+
+}
+
+}
+
+/* ===========================
+        OLAS
+=========================== */
+
+.wave{
+
+position:absolute;
+
+width:220%;
+
+height:260px;
+
+border-radius:43%;
+
+animation:waveRotate linear infinite;
+
+}
+
+.wave1{
+
+bottom:-170px;
+
+background:rgba(122,86,255,.30);
+
+animation-duration:18s;
+
+}
+
+.wave2{
+
+bottom:-180px;
+
+background:rgba(82,51,194,.35);
+
+animation-duration:14s;
+
+}
+
+.wave3{
+
+bottom:-195px;
+
+background:rgba(42,20,110,.60);
+
+animation-duration:24s;
+
+}
+
+@keyframes waveRotate{
+
+from{
+
+transform:translateX(-45%) rotate(0deg);
+
+}
+
+to{
+
+transform:translateX(0%) rotate(360deg);
+
+}
+
+}
+
+/* ===========================
+        INTRO
+=========================== */
 
 #intro{
 
 position:absolute;
+
 inset:0;
 
 display:flex;
+
 justify-content:center;
+
 align-items:center;
 
-transition:1.2s;
-
-}
-
-#intro.hide{
-
-opacity:0;
-transform:scale(1.05);
-pointer-events:none;
+transition:1s;
 
 }
 
 .card{
 
-width:min(90%,650px);
+width:min(90%,680px);
 
 padding:55px;
 
@@ -99,13 +308,13 @@ margin-bottom:18px;
 
 .card p{
 
-font-size:20px;
+font-size:21px;
 
 line-height:1.8;
 
-color:#d8d8d8;
-
 margin-bottom:40px;
+
+color:#e2e2e2;
 
 }
 
@@ -117,7 +326,7 @@ border:none;
 
 border-radius:999px;
 
-background:#7d5cff;
+background:#7b5bff;
 
 color:white;
 
@@ -133,254 +342,8 @@ button:hover{
 
 transform:scale(1.05);
 
-background:#9276ff;
+background:#967cff;
 
-box-shadow:0 0 25px rgba(146,118,255,.45);
-
-}
-
-/* ---------- HISTORIA ---------- */
-
-#storyScreen{
-
-position:absolute;
-
-inset:0;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-padding:50px;
-
-opacity:0;
-
-pointer-events:none;
-
-transition:1s;
-
-}
-
-#storyScreen.show{
-
-opacity:1;
-
-}
-
-#storyText{
-
-max-width:900px;
-
-text-align:center;
-
-font-family:"Cormorant Garamond",serif;
-
-font-size:52px;
-
-line-height:1.6;
-
-}
-
-/* ==========================
-        CIELO
-========================== */
-
-#sky{
-
-position:fixed;
-
-inset:0;
-
-overflow:hidden;
-
-z-index:-1;
-
-}
-
-/* LUNA */
-
-.moon{
-
-position:absolute;
-
-top:60px;
-
-right:70px;
-
-width:95px;
-
-height:95px;
-
-border-radius:50%;
-
-background:#f4f0ff;
-
-box-shadow:
-
-0 0 40px rgba(255,255,255,.35),
-
-0 0 90px rgba(180,160,255,.45);
-
-animation:moonFloat 6s ease-in-out infinite;
-
-}
-
-@keyframes moonFloat{
-
-0%,100%{
-
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-10px);
-
-}
-
-}
-
-/* ESTRELLAS */
-
-.stars{
-
-position:absolute;
-
-inset:0;
-
-background-image:
-
-radial-gradient(circle,#fff 1px,transparent 2px);
-
-background-size:80px 80px;
-
-opacity:.45;
-
-animation:twinkle 5s ease-in-out infinite alternate;
-
-}
-
-@keyframes twinkle{
-
-from{
-
-opacity:.2;
-
-}
-
-to{
-
-opacity:.55;
-
-}
-
-}
-
-/* OCEANO */
-
-.ocean{
-
-position:absolute;
-
-bottom:0;
-
-left:0;
-
-width:100%;
-
-height:220px;
-
-overflow:hidden;
-
-}
-
-/* OLAS */
-
-.wave{
-
-position:absolute;
-
-width:220%;
-
-height:260px;
-
-border-radius:44%;
-
-animation:wave 16s linear infinite;
-
-}
-
-.wave1{
-
-background:rgba(110,70,255,.35);
-
-bottom:-170px;
-
-}
-
-.wave2{
-
-background:rgba(70,40,170,.35);
-
-bottom:-180px;
-
-animation-duration:12s;
-
-}
-
-.wave3{
-
-background:rgba(40,20,110,.55);
-
-bottom:-200px;
-
-animation-duration:20s;
-
-}
-
-@keyframes wave{
-
-0%{
-
-transform:translateX(-45%) rotate(0deg);
-
-}
-
-100%{
-
-transform:translateX(0%) rotate(360deg);
-
-}
-
-}
-
-/* ===== EFECTO MAQUINA ===== */
-
-.cursor{
-
-display:inline-block;
-
-width:2px;
-
-height:1em;
-
-background:white;
-
-margin-left:4px;
-
-animation:blink .8s infinite;
-
-}
-
-@keyframes blink{
-
-50%{
-
-opacity:0;
-
-}
+box-shadow:0 0 25px rgba(150,124,255,.45);
 
 }
