@@ -182,3 +182,177 @@ font-size:52px;
 line-height:1.6;
 
 }
+
+/* ==========================
+        CIELO
+========================== */
+
+#sky{
+
+position:fixed;
+
+inset:0;
+
+overflow:hidden;
+
+z-index:-1;
+
+}
+
+/* LUNA */
+
+.moon{
+
+position:absolute;
+
+top:60px;
+
+right:70px;
+
+width:95px;
+
+height:95px;
+
+border-radius:50%;
+
+background:#f4f0ff;
+
+box-shadow:
+
+0 0 40px rgba(255,255,255,.35),
+
+0 0 90px rgba(180,160,255,.45);
+
+animation:moonFloat 6s ease-in-out infinite;
+
+}
+
+@keyframes moonFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+}
+
+/* ESTRELLAS */
+
+.stars{
+
+position:absolute;
+
+inset:0;
+
+background-image:
+
+radial-gradient(circle,#fff 1px,transparent 2px);
+
+background-size:80px 80px;
+
+opacity:.45;
+
+animation:twinkle 5s ease-in-out infinite alternate;
+
+}
+
+@keyframes twinkle{
+
+from{
+
+opacity:.2;
+
+}
+
+to{
+
+opacity:.55;
+
+}
+
+}
+
+/* OCEANO */
+
+.ocean{
+
+position:absolute;
+
+bottom:0;
+
+left:0;
+
+width:100%;
+
+height:220px;
+
+overflow:hidden;
+
+}
+
+/* OLAS */
+
+.wave{
+
+position:absolute;
+
+width:220%;
+
+height:260px;
+
+border-radius:44%;
+
+animation:wave 16s linear infinite;
+
+}
+
+.wave1{
+
+background:rgba(110,70,255,.35);
+
+bottom:-170px;
+
+}
+
+.wave2{
+
+background:rgba(70,40,170,.35);
+
+bottom:-180px;
+
+animation-duration:12s;
+
+}
+
+.wave3{
+
+background:rgba(40,20,110,.55);
+
+bottom:-200px;
+
+animation-duration:20s;
+
+}
+
+@keyframes wave{
+
+0%{
+
+transform:translateX(-45%) rotate(0deg);
+
+}
+
+100%{
+
+transform:translateX(0%) rotate(360deg);
+
+}
+
+}
